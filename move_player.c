@@ -1,33 +1,50 @@
 #include "config_function.h"
-#include "raylib.h"
+#include <raylib.h>
 
-void move_player(int *x, int *y, Texture2D plane)
+
+Rectangle move_player(int *x, int *y, Texture2D *plane_atual, Texture2D plane_center, Texture2D plane_left, Texture2D plane_right)
 {
-    if(IsKeyDown(KEY_W))
+    int velocidade = 5;
+    float escala = 0.8;
+    float original_alt, original_larg, larg_offset, alt_offset, hitbox_larg, hitbox_alt;
+
+    // 1. ATUALIZA POSIÇÃO E TEXTURA
+    if (IsKeyDown(KEY_W)) *y -= velocidade;
+    if (IsKeyDown(KEY_S)) *y += velocidade;
+
+    if (IsKeyDown(KEY_D))
     {
-        *y -= 5;
+        *x += velocidade;
+        *plane_atual = plane_right;
     }
-    if(IsKeyDown(KEY_S))
+    else if (IsKeyDown(KEY_A))
     {
-        *y += 5;
+        *x -= velocidade;
+        *plane_atual = plane_left;
     }
-    if(IsKeyDown(KEY_D))
+    else
     {
-        *x += 5;
-        plane = LoadTexture("sprites/planetoright.png");
-    }
-    if(IsKeyDown(KEY_A))
-    {
-        *x -= 5;
-        plane = LoadTexture("sprites/planetoleft.png");
+
+        *plane_atual = plane_center;
     }
 
+    //Pegar a altura e largura da sprite para setar as dimensoes da hitbox
+    original_larg = (float)plane_atual->width; //equivalente a (*plane_atual).width
+    original_alt = (float)plane_atual->height; //equivalente a (*plane_atual).height
 
-    BeginDrawing();
-    ClearBackground(DARKBLUE);
-    DrawTexture(plane, *x, *y, WHITE);
-    EndDrawing();
+    hitbox_larg = original_larg * escala;
+    hitbox_alt = original_alt * escala;
 
-    if(!IsKeyDown(KEY_D) && !IsKeyDown(KEY_A))plane = LoadTexture("sprites/plane.png");
+    larg_offset = (original_larg - hitbox_larg) / 2.0f;
+    alt_offset = (original_alt - hitbox_alt) / 2.0f;
+
+    // Cria o retângulo de colisão, aplicando a correção
+    Rectangle player_hitbox = {
+        (float)*x + larg_offset,
+        (float)*y + alt_offset,
+        hitbox_larg,
+        hitbox_alt
+    };
+
+    return player_hitbox;
 }
-
