@@ -2,11 +2,20 @@
 #include <raylib.h>
 #include "config_function.h"
 
+typedef enum GameScreen {
+    MENU = 0,
+    RANK,
+    GAMEPLAY,
+    TROCA,
+    ENDGAME
+    } GameScreen;
+
 int main()
 {
 
-    int x = 300;
-    int y = 700;
+    GameScreen tela_atual = MENU;
+    int x = 300, y = 700;
+
 
     InitWindow(960, 800, "RiverINF");
     SetTargetFPS(60);
@@ -21,24 +30,44 @@ int main()
 
     while(!WindowShouldClose())
     {
-            player_hitbox = move_player(
-                &x,
-                &y,
-                &current_plane_texture,
-                planeCenter,
-                planeLeft,
-                planeRight
-            );
+        switch(tela_atual){
+        case MENU:
+            {
+                if(menu() == 'g')
+                    {
+                        tela_atual = GAMEPLAY;
+                    }
+                else if(menu() == 'r')
+                    {
+                        tela_atual = RANK; //NÃO APERTAR O BOTAO DO RANKING PORQUE NAO CONFIGUREI ESSA TELA RANK ENT VAI TRAVAR O EXECUTAVEL
+                    }
+                break;
+            }
+
+        case GAMEPLAY:
+            {
+                 player_hitbox = move_player(
+                    &x,
+                    &y,
+                    &current_plane_texture,
+                    planeCenter,
+                    planeLeft,
+                    planeRight
+                );
 
 
-            BeginDrawing();
+                BeginDrawing();
 
-                ClearBackground(DARKBLUE);
-                DrawTexture(current_plane_texture, x, y, WHITE);
-                DrawRectangleRec(player_hitbox, Fade(RED, 0.4f));
+                    ClearBackground(DARKBLUE);
+                    DrawTexture(current_plane_texture, x, y, WHITE);
+                    DrawRectangleRec(player_hitbox, Fade(RED, 0.4f));
 
 
-            EndDrawing();
+                EndDrawing();
+                break;
+            }
+
+        }
     }
 
 

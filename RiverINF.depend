@@ -2,17 +2,18 @@
 1762213746 source:c:\users\joão walter\documents\trabalhos\riverinf\config_function.c
 	"raylib.h"
 
-1762465748 source:c:\users\joão walter\documents\trabalhos\riverinf\main.c
+1762989724 source:c:\users\joão walter\documents\trabalhos\riverinf\main.c
 	<raylib.h>
 	"config_function.h"
 
-1762462612 c:\users\joão walter\documents\trabalhos\riverinf\config_function.h
+1762990168 c:\users\joão walter\documents\trabalhos\riverinf\config_function.h
 	<raylib.h>
 
 1762461783 source:c:\users\joão walter\documents\trabalhos\riverinf\move_player.c
 	"config_function.h"
 	<raylib.h>
 
-1762814020 source:c:\users\joão walter\documents\trabalhos\riverinf\menu.c
+1762990662 source:c:\users\joão walter\documents\trabalhos\riverinf\menu.c
 	"config_function.h"
+	<raylib.h>
 

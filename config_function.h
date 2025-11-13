@@ -4,6 +4,9 @@
 #define CONFIG_FUNCTION_H
 
 #include <raylib.h>
+#define TAM_DEFAULT 90
+#define TAM_TITLE 130
+
 
 
 Rectangle move_player(int *x, int *y, Texture2D *plane_atual, Texture2D plane_center, Texture2D plane_left, Texture2D plane_right);
