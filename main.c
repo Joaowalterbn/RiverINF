@@ -1,14 +1,4 @@
-
-#include <raylib.h>
 #include "config_function.h"
-
-typedef enum GameScreen {
-    MENU = 0,
-    RANK,
-    GAMEPLAY,
-    TROCA,
-    ENDGAME
-    } GameScreen;
 
 int main()
 {
@@ -30,53 +20,61 @@ int main()
 
     while(!WindowShouldClose())
     {
-        switch(tela_atual){
+        switch(tela_atual)
+        {
         case MENU:
+        {
+            if(menu() == 'g')
             {
-                if(menu() == 'g')
-                    {
-                        tela_atual = GAMEPLAY;
-                    }
-                else if(menu() == 'r')
-                    {
-                        tela_atual = RANK; //NÃO APERTAR O BOTAO DO RANKING PORQUE NAO CONFIGUREI ESSA TELA RANK ENT VAI TRAVAR O EXECUTAVEL
-                    }
-                break;
+                tela_atual = GAMEPLAY;
             }
+            else if(menu() == 'r')
+            {
+                tela_atual = RANK;
+            }
+            break;
+        }
 
         case GAMEPLAY:
-            {
-                 player_hitbox = move_player(
-                    &x,
-                    &y,
-                    &current_plane_texture,
-                    planeCenter,
-                    planeLeft,
-                    planeRight
-                );
+        {
+            player_hitbox = move_player(
+                                &x,
+                                &y,
+                                &current_plane_texture,
+                                planeCenter,
+                                planeLeft,
+                                planeRight
+                            );
 
 
-                BeginDrawing();
-
-                    ClearBackground(DARKBLUE);
-                    DrawTexture(current_plane_texture, x, y, WHITE);
-                    DrawRectangleRec(player_hitbox, Fade(RED, 0.4f));
-
-
-                EndDrawing();
-                break;
-            }
-
+            BeginDrawing();
+            ClearBackground(DARKBLUE);
+            DrawTexture(current_plane_texture, x, y, WHITE);
+            DrawRectangleRec(player_hitbox, Fade(RED, 0.4f));
+            EndDrawing();
+            break;
         }
+        case RANK:
+        {
+            if (CheckCollisionPointRec(GetMousePosition(), print_rank()))
+            {
+                if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)||IsMouseButtonPressed(MOUSE_LEFT_BUTTON)||IsMouseButtonDown(MOUSE_LEFT_BUTTON))
+                {
+                    tela_atual = MENU;
+                }
+            }
+        }
+
+        }//fechamento do switch
     }
 
 
-   //Final - Descarregar
+    //Final - Descarregar
     UnloadTexture(planeCenter);
     UnloadTexture(planeRight);
     UnloadTexture(planeLeft);
 
     CloseWindow();
     return 0;
-    }
+}
 

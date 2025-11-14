@@ -1,6 +1,4 @@
 #include "config_function.h"
-#include <raylib.h>
-
 
 Rectangle move_player(int *x, int *y, Texture2D *plane_atual, Texture2D plane_center, Texture2D plane_left, Texture2D plane_right)
 {
@@ -39,7 +37,8 @@ Rectangle move_player(int *x, int *y, Texture2D *plane_atual, Texture2D plane_ce
     alt_offset = (original_alt - hitbox_alt) / 2.0f;
 
     // Cria o retângulo de colisão, aplicando a correção
-    Rectangle player_hitbox = {
+    Rectangle player_hitbox =
+    {
         (float)*x + larg_offset,
         (float)*y + alt_offset,
         hitbox_larg,
