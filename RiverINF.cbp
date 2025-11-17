@@ -32,7 +32,13 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="config_function.h" />
+		<Unit filename="definir_sprites.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="erro_load.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="fshoot.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="le_arquivo.c">
@@ -47,7 +53,13 @@
 		<Unit filename="move_player.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="organizar_rank.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="print_rank.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="salva_arquivo.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>

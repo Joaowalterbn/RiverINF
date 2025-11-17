@@ -2,13 +2,16 @@
 
 int main()
 {
-
     GameScreen tela_atual = MENU;
-    int x = 300, y = 700;
 
+    int x = 300, y = 700;
 
     InitWindow(960, 800, "RiverINF");
     SetTargetFPS(60);
+
+    TIRO projetil = {0};
+
+    Texture2D tiro = LoadTexture("sprites/projectile.png");
 
     Texture2D planeCenter = LoadTexture("sprites/plane.png");
     Texture2D planeRight = LoadTexture("sprites/planetoright.png");
@@ -46,11 +49,21 @@ int main()
                                 planeRight
                             );
 
+            if(!projetil.flag){
+                if(IsKeyPressed(KEY_SPACE))
+                    projetil = fshoot(x, y, tiro);
+            }
+
+
 
             BeginDrawing();
             ClearBackground(DARKBLUE);
             DrawTexture(current_plane_texture, x, y, WHITE);
-            DrawRectangleRec(player_hitbox, Fade(RED, 0.4f));
+            if(projetil.flag){
+                DrawTexture(tiro, projetil.sprite_tiro.x, projetil.sprite_tiro.y, WHITE);
+                projetil.sprite_tiro.y -= 30;
+                if(projetil.sprite_tiro.y < 0) projetil.flag = 0;
+            }
             EndDrawing();
             break;
         }
@@ -73,6 +86,7 @@ int main()
     UnloadTexture(planeCenter);
     UnloadTexture(planeRight);
     UnloadTexture(planeLeft);
+    UnloadTexture(tiro);
 
     CloseWindow();
     return 0;

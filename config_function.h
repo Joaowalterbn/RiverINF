@@ -24,6 +24,19 @@ typedef enum GameScreen
 
 typedef struct
 {
+    int flag;
+    Rectangle sprite_tiro;
+}TIRO;
+
+typedef struct
+{
+    int flag;
+    char tipo;
+    Rectangle ini;
+}SPRITE;
+
+typedef struct
+{
     char nome[45];
     int pontos;
 } JOGADOR;
@@ -37,5 +50,11 @@ Rectangle print_rank(void);
 void erro_load(void);
 
 void le_arquivo(char nome_arq[], JOGADOR top5[MAXSCORES]);
+
+void salva_arquivo(char nome_arq[], JOGADOR top5[MAXSCORES]);
+
+TIRO fshoot(int x, int y, Texture2D t);
+
+SPRITE definir_sprites(int x, int y, Texture2D txt, char tipo);
 
 #endif // CONFIG_FUNCTION_H
