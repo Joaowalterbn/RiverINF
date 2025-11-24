@@ -31,35 +31,35 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="config_function.h" />
-		<Unit filename="definir_sprites.c">
+		<Unit filename="funções/config_function.h" />
+		<Unit filename="funções/definir_sprites.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="erro_load.c">
+		<Unit filename="funções/erro_load.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="fshoot.c">
+		<Unit filename="funções/fshoot.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="le_arquivo.c">
+		<Unit filename="funções/le_arquivo.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="main.c">
+		<Unit filename="funções/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="menu.c">
+		<Unit filename="funções/menu.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="move_player.c">
+		<Unit filename="funções/move_player.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="organizar_rank.c">
+		<Unit filename="funções/organizar_rank.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="print_rank.c">
+		<Unit filename="funções/print_rank.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="salva_arquivo.c">
+		<Unit filename="funções/salva_arquivo.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>

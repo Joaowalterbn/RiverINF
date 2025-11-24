@@ -4,14 +4,24 @@ int main()
 {
     GameScreen tela_atual = MENU;
 
-    int x = 300, y = 700;
+    int x = 300, y = 700, pontuacao, vidas, combustivel, nivel, velocidade;
 
     InitWindow(960, 800, "RiverINF");
     SetTargetFPS(60);
 
+    Rectangle hud = {
+            0,
+            0,
+            960,
+            40
+        };
+
     TIRO projetil = {0};
 
     Texture2D tiro = LoadTexture("sprites/projectile.png");
+    Texture2D vida = LoadTexture("sprites/heart.png");
+
+
 
     Texture2D planeCenter = LoadTexture("sprites/plane.png");
     Texture2D planeRight = LoadTexture("sprites/planetoright.png");
@@ -30,6 +40,11 @@ int main()
             if(menu() == 'g')
             {
                 tela_atual = GAMEPLAY;
+                velocidade = 2;
+                vidas = 3;
+                nivel = 1;
+                pontuacao = 0;
+                combustivel = 100;
             }
             else if(menu() == 'r')
             {
@@ -40,13 +55,16 @@ int main()
 
         case GAMEPLAY:
         {
+            if(vidas == 0)tela_atual = ENDGAME;
+
             player_hitbox = move_player(
                                 &x,
                                 &y,
                                 &current_plane_texture,
                                 planeCenter,
                                 planeLeft,
-                                planeRight
+                                planeRight,
+                                velocidade
                             );
 
             if(!projetil.flag){
@@ -57,13 +75,28 @@ int main()
 
 
             BeginDrawing();
-            ClearBackground(DARKBLUE);
-            DrawTexture(current_plane_texture, x, y, WHITE);
-            if(projetil.flag){
-                DrawTexture(tiro, projetil.sprite_tiro.x, projetil.sprite_tiro.y, WHITE);
-                projetil.sprite_tiro.y -= 30;
-                if(projetil.sprite_tiro.y < 0) projetil.flag = 0;
-            }
+                ClearBackground(DARKBLUE);
+                //Desenho do Avião
+                DrawTexture(current_plane_texture, x, y, WHITE);
+
+                //Desenha o projétil
+                if(projetil.flag){
+                    DrawTexture(tiro, projetil.sprite_tiro.x, projetil.sprite_tiro.y, WHITE);
+                    projetil.sprite_tiro.y -= 30;
+                    if(projetil.sprite_tiro.y < 0) projetil.flag = 0;
+                }
+
+                //Desenha a hud
+                    DrawRectangleRec(hud, BLACK);
+                    DrawText("Vidas: ", 10, 10, 30, YELLOW);
+                    for(int life = 0; life < vidas; life++){
+                        DrawTexture(vida, (life * 30 + MeasureText("Vidas: ", 30)+ 10), 10, WHITE);
+                    }
+
+                    DrawText(TextFormat("Nivel: %i", nivel), 210, 10, 30, YELLOW);
+                    DrawText(TextFormat("Fuel: %i", combustivel), 360, 10, 30, YELLOW);
+                    DrawText(TextFormat("Score: %i", pontuacao), 520, 10, 30, YELLOW);
+
             EndDrawing();
             break;
         }

@@ -41,7 +41,7 @@ typedef struct
     int pontos;
 } JOGADOR;
 
-Rectangle move_player(int *x, int *y, Texture2D *plane_atual, Texture2D plane_center, Texture2D plane_left, Texture2D plane_right);
+Rectangle move_player(int *x, int *y, Texture2D *plane_atual, Texture2D plane_center, Texture2D plane_left, Texture2D plane_right, int velocidade_y);
 
 char menu(void);
 

@@ -1,14 +1,14 @@
 #include "config_function.h"
 
-Rectangle move_player(int *x, int *y, Texture2D *plane_atual, Texture2D plane_center, Texture2D plane_left, Texture2D plane_right)
+Rectangle move_player(int *x, int *y, Texture2D *plane_atual, Texture2D plane_center, Texture2D plane_left, Texture2D plane_right, int velocidade_y)
 {
     int velocidade = 5;
     float escala = 0.8;
     float original_alt, original_larg, larg_offset, alt_offset, hitbox_larg, hitbox_alt;
 
     // 1. ATUALIZA POSIÇÃO E TEXTURA
-    if (IsKeyDown(KEY_W)) *y -= velocidade;
-    if (IsKeyDown(KEY_S)) *y += velocidade;
+    *y -= velocidade_y;
+
 
     if (IsKeyDown(KEY_D))
     {
