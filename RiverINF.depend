@@ -36,10 +36,10 @@
 1763423736 source:c:\users\joão walter\documents\trabalhos\riverinf\salva_arquivo.c
 	"config_function.h"
 
-1763951420 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\definir_sprites.c
+1764358705 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\definir_sprites.c
 	"config_function.h"
 
-1763949936 c:\users\joão walter\documents\trabalhos\riverinf\funções\config_function.h
+1764090290 c:\users\joão walter\documents\trabalhos\riverinf\funções\config_function.h
 	<raylib.h>
 	<stdio.h>
 
@@ -52,7 +52,7 @@
 1763068363 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\le_arquivo.c
 	"config_function.h"
 
-1764024892 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\main.c
+1764090037 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\main.c
 	"config_function.h"
 
 1763068424 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\menu.c

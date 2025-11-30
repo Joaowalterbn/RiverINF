@@ -18,9 +18,18 @@ typedef enum GameScreen
     MENU = 0,
     RANK,
     GAMEPLAY,
-    TROCA,
     ENDGAME
 } GameScreen;
+
+typedef enum Fase
+{
+    FASE1 = 0,
+    FASE2,
+    FASE3,
+    FASE4,
+    FASE5,
+
+} Fase;
 
 typedef struct
 {
