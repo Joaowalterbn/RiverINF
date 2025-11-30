@@ -3,7 +3,7 @@
 #ifndef CONFIG_FUNCTION_H
 #define CONFIG_FUNCTION_H
 
-#include <raylib.h>
+#include "raylib.h"
 #include <stdio.h>
 
 #define TAM_DEFAULT 90
@@ -61,6 +61,8 @@ void erro_load(void);
 void le_arquivo(char nome_arq[], JOGADOR top5[MAXSCORES]);
 
 void salva_arquivo(char nome_arq[], JOGADOR top5[MAXSCORES]);
+
+int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X);
 
 TIRO fshoot(int x, int y, Texture2D t);
 

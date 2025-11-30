@@ -5,7 +5,8 @@ int main()
     GameScreen tela_atual = MENU;
     Fase fase_atual;
 
-
+    SPRITE vetor_hitboxs[480] = {0};
+    int quant_hitboxs;
     int x_aviao = 300, y_aviao = 700, pontuacao, vidas, combustivel, nivel, velocidade;
 
     InitWindow(960, 800, "RiverINF");
@@ -23,8 +24,8 @@ int main()
 
     Texture2D tiro = LoadTexture("sprites/projectile.png");
     Texture2D vida = LoadTexture("sprites/heart.png");
-
-
+    Texture2D terra = LoadTexture("sprites/land.png");
+    Texture2D heli_1 = LoadTexture("sprites/helicopter_1.png");
 
     Texture2D planeCenter = LoadTexture("sprites/plane.png");
     Texture2D planeRight = LoadTexture("sprites/planetoright.png");
@@ -70,18 +71,23 @@ int main()
                                 planeRight,
                                 velocidade
                             );
-            /*switch(fase_atual){
+            switch(fase_atual){
                 case FASE1:
+                    quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1);
                     break;
                 case FASE2:
+                    quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1);
                     break;
                 case FASE3:
+                    quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1);
                     break;
                 case FASE4:
+                    quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1);
                     break;
                 case FASE5:
+                    quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1);
                     break;
-            }*/
+            }
 
             if(!projetil.flag)
             {
