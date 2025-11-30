@@ -70,3 +70,34 @@
 1763951350 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\salva_arquivo.c
 	"config_function.h"
 
+1764532719 source:c:\users\rafael droves\documents\faculdade\riverinf\funções\definir_sprites.c
+	"config_function.h"
+
+1764534681 c:\users\rafael droves\documents\faculdade\riverinf\funções\config_function.h
+	"raylib.h"
+	<stdio.h>
+
+1764381848 source:c:\users\rafael droves\documents\faculdade\riverinf\funções\erro_load.c
+	"config_function.h"
+
+1764381848 source:c:\users\rafael droves\documents\faculdade\riverinf\funções\fshoot.c
+	"config_function.h"
+
+1764381848 source:c:\users\rafael droves\documents\faculdade\riverinf\funções\le_arquivo.c
+	"config_function.h"
+
+1764381848 source:c:\users\rafael droves\documents\faculdade\riverinf\funções\menu.c
+	"config_function.h"
+
+1764381848 source:c:\users\rafael droves\documents\faculdade\riverinf\funções\move_player.c
+	"config_function.h"
+
+1764381848 source:c:\users\rafael droves\documents\faculdade\riverinf\funções\organizar_rank.c
+	"config_function.h"
+
+1764381848 source:c:\users\rafael droves\documents\faculdade\riverinf\funções\print_rank.c
+	"config_function.h"
+
+1764381848 source:c:\users\rafael droves\documents\faculdade\riverinf\funções\salva_arquivo.c
+	"config_function.h"
+
