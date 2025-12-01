@@ -83,7 +83,10 @@ int main()
 
         case GAMEPLAY:
         {
-            if(vidas == 0)tela_atual = ENDGAME;
+            if(vidas <= 0){
+                tela_atual = MENU;
+                mapa_carregado = false;
+            }
 
             player_hitbox = move_player(
                                 &x_aviao,
@@ -132,6 +135,7 @@ int main()
             DrawText(TextFormat("Score: %i", pontuacao), 520, 10, 30, YELLOW);
 
             EndDrawing();
+            checar_colisao(vetor_hitboxs, quant_hitboxs, projetil, player_hitbox, &pontuacao, &vidas, &x_aviao, &y_aviao);
             break;
         }
         case RANK:

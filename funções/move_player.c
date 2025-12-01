@@ -2,22 +2,25 @@
 
 Rectangle move_player(int *x, int *y, Texture2D *plane_atual, Texture2D plane_center, Texture2D plane_left, Texture2D plane_right, int velocidade_y)
 {
-    int velocidade = 5;
+    int velocidade = 5, PosX = *x, PosY = *y;
     float escala = 0.8;
     float original_alt, original_larg, larg_offset, alt_offset, hitbox_larg, hitbox_alt;
 
      //1. ATUALIZA POSIÇÃO E TEXTURA
-    *y -= velocidade_y;
+    PosY -= velocidade_y;
+    altera_variaveis(y, PosY);
 
 
     if (IsKeyDown(KEY_D))
     {
-        *x += velocidade;
+        PosX += velocidade;
+        altera_variaveis(x, PosX);
         *plane_atual = plane_right;
     }
     else if (IsKeyDown(KEY_A))
     {
-        *x -= velocidade;
+        PosX -= velocidade;
+        altera_variaveis(x, PosX);
         *plane_atual = plane_left;
     }
     else
