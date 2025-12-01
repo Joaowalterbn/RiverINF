@@ -17,6 +17,7 @@ typedef enum GameScreen
 {
     MENU = 0,
     RANK,
+    TROCA,
     GAMEPLAY,
     ENDGAME
 } GameScreen;
@@ -62,10 +63,14 @@ void le_arquivo(char nome_arq[], JOGADOR top5[MAXSCORES]);
 
 void salva_arquivo(char nome_arq[], JOGADOR top5[MAXSCORES]);
 
-int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X);
+int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X, int *x_aviao, int *y_aviao);
+
+void desenhar_mapa(int nblocos, SPRITE v[], Texture2D T, Texture2D X);
 
 TIRO fshoot(int x, int y, Texture2D t);
 
 SPRITE definir_sprites(int x, int y, Texture2D txt, char tipo);
+
+SPRITE definir_terrenos(int x, int y, Texture2D txt, char tipo);
 
 #endif // CONFIG_FUNCTION_H

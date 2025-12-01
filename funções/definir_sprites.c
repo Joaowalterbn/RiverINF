@@ -15,3 +15,18 @@ SPRITE definir_sprites(int x, int y, Texture2D txt, char tipo){
     };
     return s;
 }
+
+SPRITE definir_terrenos(int x, int y, Texture2D txt, char tipo){
+    Rectangle hitbox = {
+        x,
+        y,
+        txt.width,
+        txt.height
+    };
+    SPRITE s = {
+        1,
+        tipo,
+        hitbox
+    };
+    return s;
+}

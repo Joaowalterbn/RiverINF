@@ -4,10 +4,11 @@ int main()
 {
     GameScreen tela_atual = MENU;
     Fase fase_atual;
+    bool mapa_carregado = false;
 
     SPRITE vetor_hitboxs[480] = {0};
     int quant_hitboxs;
-    int x_aviao = 300, y_aviao = 700, pontuacao, vidas, combustivel, nivel, velocidade;
+    int x_aviao, y_aviao, pontuacao, vidas, combustivel, nivel, velocidade;
 
     InitWindow(960, 800, "RiverINF");
     SetTargetFPS(60);
@@ -43,13 +44,13 @@ int main()
         {
             if(menu() == 'g')
             {
-                tela_atual = GAMEPLAY;
+                tela_atual = TROCA;
                 velocidade = 2;
                 vidas = 3;
                 nivel = 1;
                 pontuacao = 0;
                 combustivel = 100;
-                fase_atual = FASE1;
+                fase_atual = 0;
             }
             else if(menu() == 'r')
             {
@@ -57,6 +58,28 @@ int main()
             }
             break;
         }
+        case TROCA:
+            {
+                if(!mapa_carregado){
+                    switch(fase_atual){
+                    case FASE1:
+                        quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
+                        break;
+                    case FASE2:
+                        quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
+                        break;
+                    case FASE3:
+                        quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
+                        break;
+                    case FASE4:
+                        quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
+                        break;
+                    case FASE5:
+                        quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
+                        break;
+                    } mapa_carregado = true;
+                }
+            }
 
         case GAMEPLAY:
         {
@@ -71,23 +94,6 @@ int main()
                                 planeRight,
                                 velocidade
                             );
-            switch(fase_atual){
-                case FASE1:
-                    quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1);
-                    break;
-                case FASE2:
-                    quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1);
-                    break;
-                case FASE3:
-                    quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1);
-                    break;
-                case FASE4:
-                    quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1);
-                    break;
-                case FASE5:
-                    quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1);
-                    break;
-            }
 
             if(!projetil.flag)
             {
@@ -99,8 +105,11 @@ int main()
 
             BeginDrawing();
             ClearBackground(DARKBLUE);
-            //Desenho do Avião
+            desenhar_mapa(quant_hitboxs, vetor_hitboxs, terra, heli_1);
+
             DrawTexture(current_plane_texture, x_aviao, y_aviao, WHITE);
+            DrawRectangleRec(player_hitbox, Fade(RED, 0.5f));
+
 
             //Desenha o projétil
             if(projetil.flag)

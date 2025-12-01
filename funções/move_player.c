@@ -6,7 +6,7 @@ Rectangle move_player(int *x, int *y, Texture2D *plane_atual, Texture2D plane_ce
     float escala = 0.8;
     float original_alt, original_larg, larg_offset, alt_offset, hitbox_larg, hitbox_alt;
 
-    // 1. ATUALIZA POSIÇÃO E TEXTURA
+     //1. ATUALIZA POSIÇÃO E TEXTURA
     *y -= velocidade_y;
 
 

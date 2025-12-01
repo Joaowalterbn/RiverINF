@@ -44,6 +44,9 @@
 		<Unit filename="funções/le_arquivo.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="funções/le_mapa.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="funções/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
