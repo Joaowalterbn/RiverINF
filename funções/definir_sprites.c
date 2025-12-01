@@ -24,7 +24,7 @@ SPRITE definir_terrenos(int x, int y, Texture2D txt, char tipo){
         txt.height
     };
     SPRITE s = {
-        1,
+        5,
         tipo,
         hitbox
     };

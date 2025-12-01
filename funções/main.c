@@ -66,16 +66,16 @@ int main()
                         quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
                         break;
                     case FASE2:
-                        quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
+                        quant_hitboxs = le_mapa("mapas/mapa2.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
                         break;
                     case FASE3:
-                        quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
+                        quant_hitboxs = le_mapa("mapas/mapa3.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
                         break;
                     case FASE4:
-                        quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
+                        quant_hitboxs = le_mapa("mapas/mapa4.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
                         break;
                     case FASE5:
-                        quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
+                        quant_hitboxs = le_mapa("mapas/mapa5.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
                         break;
                     } mapa_carregado = true;
                 }

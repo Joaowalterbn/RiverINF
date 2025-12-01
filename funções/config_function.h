@@ -12,6 +12,9 @@
 #define MAXSCORES 5
 #define ARQ_NOME "top5.bin"
 #define X_TITLE 100
+#define PTS_H 60
+#define PTS_P 200
+#define PTS_N 30
 
 typedef enum GameScreen
 {
@@ -76,5 +79,7 @@ SPRITE definir_terrenos(int x, int y, Texture2D txt, char tipo);
 void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, Rectangle aviao, int *pontos, int *vidas, int *x, int *y);
 
 void altera_variaveis(int *v, int novo);
+
+void altera_sprites(Texture2D *txt, Texture2D nova);
 
 #endif // CONFIG_FUNCTION_H

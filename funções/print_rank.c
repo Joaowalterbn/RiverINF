@@ -2,7 +2,7 @@
 
 Rectangle print_rank(void)
 {
-    int z = 100, op;
+    int z = 100;
     JOGADOR ranking[MAXSCORES];
     le_arquivo(ARQ_NOME, ranking);
     BeginDrawing();

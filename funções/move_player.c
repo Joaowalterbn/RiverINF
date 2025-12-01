@@ -5,6 +5,7 @@ Rectangle move_player(int *x, int *y, Texture2D *plane_atual, Texture2D plane_ce
     int velocidade = 5, PosX = *x, PosY = *y;
     float escala = 0.8;
     float original_alt, original_larg, larg_offset, alt_offset, hitbox_larg, hitbox_alt;
+    Texture2D aviao = *plane_atual;
 
      //1. ATUALIZA POSIÇÃO E TEXTURA
     PosY -= velocidade_y;
@@ -15,19 +16,20 @@ Rectangle move_player(int *x, int *y, Texture2D *plane_atual, Texture2D plane_ce
     {
         PosX += velocidade;
         altera_variaveis(x, PosX);
-        *plane_atual = plane_right;
+        aviao = plane_right;
     }
     else if (IsKeyDown(KEY_A))
     {
         PosX -= velocidade;
         altera_variaveis(x, PosX);
-        *plane_atual = plane_left;
+        aviao = plane_left;
     }
     else
     {
 
-        *plane_atual = plane_center;
+        aviao = plane_center;
     }
+    altera_sprites(plane_atual, aviao);
 
     //Pegar a altura e largura da sprite para setar as dimensoes da hitbox
     original_larg = (float)plane_atual->width; //equivalente a (*plane_atual).width
