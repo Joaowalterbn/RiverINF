@@ -36,11 +36,11 @@
 1763423736 source:c:\users\joão walter\documents\trabalhos\riverinf\salva_arquivo.c
 	"config_function.h"
 
-1764358705 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\definir_sprites.c
+1764628249 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\definir_sprites.c
 	"config_function.h"
 
-1764090290 c:\users\joão walter\documents\trabalhos\riverinf\funções\config_function.h
-	<raylib.h>
+1764633974 c:\users\joão walter\documents\trabalhos\riverinf\funções\config_function.h
+	"raylib.h"
 	<stdio.h>
 
 1763066589 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\erro_load.c
@@ -52,19 +52,19 @@
 1763068363 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\le_arquivo.c
 	"config_function.h"
 
-1764090037 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\main.c
+1764634632 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\main.c
 	"config_function.h"
 
 1763068424 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\menu.c
 	"config_function.h"
 
-1763950015 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\move_player.c
+1764627566 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\move_player.c
 	"config_function.h"
 
 1763423736 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\organizar_rank.c
 	"config_function.h"
 
-1763068363 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\print_rank.c
+1764626752 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\print_rank.c
 	"config_function.h"
 
 1763951350 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\salva_arquivo.c
@@ -99,5 +99,17 @@
 	"config_function.h"
 
 1764381848 source:c:\users\rafael droves\documents\faculdade\riverinf\funções\salva_arquivo.c
+	"config_function.h"
+
+1764634380 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\le_mapa.c
+	"config_function.h"
+
+1764634016 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\checar_colisao.c
+	"config_function.h"
+
+1764625184 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\altera_variaveis.c
+	"config_function.h"
+
+1764633974 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\altera_sprites.c
 	"config_function.h"
 

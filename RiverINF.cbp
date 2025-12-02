@@ -31,6 +31,15 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="funções/altera_sprites.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="funções/altera_variaveis.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="funções/checar_colisao.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="funções/config_function.h" />
 		<Unit filename="funções/definir_sprites.c">
 			<Option compilerVar="CC" />
@@ -42,6 +51,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="funções/le_arquivo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="funções/le_mapa.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="funções/main.c">

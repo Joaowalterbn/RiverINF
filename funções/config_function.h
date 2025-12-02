@@ -12,11 +12,15 @@
 #define MAXSCORES 5
 #define ARQ_NOME "top5.bin"
 #define X_TITLE 100
+#define PTS_H 60
+#define PTS_P 200
+#define PTS_N 30
 
 typedef enum GameScreen
 {
     MENU = 0,
     RANK,
+    TROCA,
     GAMEPLAY,
     ENDGAME
 } GameScreen;
@@ -62,10 +66,20 @@ void le_arquivo(char nome_arq[], JOGADOR top5[MAXSCORES]);
 
 void salva_arquivo(char nome_arq[], JOGADOR top5[MAXSCORES]);
 
-int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X);
+int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X, int *x_aviao, int *y_aviao);
+
+void desenhar_mapa(int nblocos, SPRITE v[], Texture2D T, Texture2D X);
 
 TIRO fshoot(int x, int y, Texture2D t);
 
 SPRITE definir_sprites(int x, int y, Texture2D txt, char tipo);
+
+SPRITE definir_terrenos(int x, int y, Texture2D txt, char tipo);
+
+void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rectangle aviao, int *pontos, int *vidas, int *x, int *y);
+
+void altera_variaveis(int *v, int novo);
+
+void altera_sprites(Texture2D *txt, Texture2D nova);
 
 #endif // CONFIG_FUNCTION_H
