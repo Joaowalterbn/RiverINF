@@ -27,7 +27,7 @@ int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X, i
                         posX += 40;
                         break;
                 case'X':
-                        v[i] = definir_sprites(posX, posY, X, 'X');
+                        v[i] = definir_sprites(posX, posY, X, 'X', 2);
                         i++;
                         posX += 40;
                         break;
@@ -51,7 +51,9 @@ void desenhar_mapa(int nblocos, SPRITE v[], Texture2D T, Texture2D X)
 {
     for(int i = 0; i < nblocos; i++){
         char c = v[i].tipo;
-        int flag = v[i].flag;
+        int flag;
+        if(v[i].flag > 0) flag = 1;
+        else flag = 0;
         if(flag){
             switch(c)
                     {

@@ -72,7 +72,7 @@ void desenhar_mapa(int nblocos, SPRITE v[], Texture2D T, Texture2D X);
 
 TIRO fshoot(int x, int y, Texture2D t);
 
-SPRITE definir_sprites(int x, int y, Texture2D txt, char tipo);
+SPRITE definir_sprites(int x, int y, Texture2D txt, char tipo, int flag);
 
 SPRITE definir_terrenos(int x, int y, Texture2D txt, char tipo);
 
