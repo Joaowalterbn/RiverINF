@@ -23,10 +23,12 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rect
                             altera_variaveis(y, 750);
                         }
                          if(CheckCollisionRecs(projetil.sprite_tiro, atual)&& tiro_ativo){
-                            v[i].flag = 0;
+                            v[i].flag-= 1;
                             tiro_ativo = 0;
-                            pts += PTS_H;//pontos helicoptero;
-                            altera_variaveis(pontos, pts);
+                            if(v[i].flag <= 0){
+                                pts += PTS_H;//pontos helicoptero;
+                                altera_variaveis(pontos, pts);
+                            }
                          }
                         break;
                 case'P':
@@ -39,8 +41,7 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rect
                          if(CheckCollisionRecs(projetil.sprite_tiro, atual)&& tiro_ativo){
                             v[i].flag -= 1;
                             tiro_ativo = 0;
-                            int flagPonte = v[i].flag;
-                            if(flagPonte <= 0){
+                            if(v[i].flag <= 0){
                                 pts += PTS_P;//pontos Ponte;
                                 altera_variaveis(pontos, pts);
                             }

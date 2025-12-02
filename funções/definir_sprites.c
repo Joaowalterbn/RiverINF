@@ -1,6 +1,6 @@
 #include "config_function.h"
 
-SPRITE definir_sprites(int x, int y, Texture2D txt, char tipo){
+SPRITE definir_sprites(int x, int y, Texture2D txt, char tipo, int flag){
     float escala = 0.8;
     Rectangle hitbox = {
         x + ((float)txt.width - (float)txt.width * escala) / 2.0f,
@@ -9,7 +9,7 @@ SPRITE definir_sprites(int x, int y, Texture2D txt, char tipo){
         txt.height*escala
     };
     SPRITE s = {
-        1,
+        flag,
         tipo,
         hitbox
     };

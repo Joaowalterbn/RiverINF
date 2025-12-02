@@ -2,7 +2,7 @@
 
 Rectangle move_player(int *x, int *y, Texture2D *plane_atual, Texture2D plane_center, Texture2D plane_left, Texture2D plane_right, int velocidade_y)
 {
-    int velocidade = 5, PosX = *x, PosY = *y;
+    int velocidade = 4, PosX = *x, PosY = *y;
     float escala = 0.8;
     float original_alt, original_larg, larg_offset, alt_offset, hitbox_larg, hitbox_alt;
     Texture2D aviao = *plane_atual;
