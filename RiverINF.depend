@@ -36,10 +36,10 @@
 1763423736 source:c:\users\joão walter\documents\trabalhos\riverinf\salva_arquivo.c
 	"config_function.h"
 
-1764554633 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\definir_sprites.c
+1764628249 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\definir_sprites.c
 	"config_function.h"
 
-1764627439 c:\users\joão walter\documents\trabalhos\riverinf\funções\config_function.h
+1764633974 c:\users\joão walter\documents\trabalhos\riverinf\funções\config_function.h
 	"raylib.h"
 	<stdio.h>
 
@@ -52,7 +52,7 @@
 1763068363 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\le_arquivo.c
 	"config_function.h"
 
-1764626495 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\main.c
+1764634632 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\main.c
 	"config_function.h"
 
 1763068424 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\menu.c
@@ -101,15 +101,15 @@
 1764381848 source:c:\users\rafael droves\documents\faculdade\riverinf\funções\salva_arquivo.c
 	"config_function.h"
 
-1764624927 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\le_mapa.c
+1764634380 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\le_mapa.c
 	"config_function.h"
 
-1764626495 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\checar_colisao.c
+1764634016 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\checar_colisao.c
 	"config_function.h"
 
 1764625184 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\altera_variaveis.c
 	"config_function.h"
 
-1764627362 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\altera_sprites.c
+1764633974 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\altera_sprites.c
 	"config_function.h"
 

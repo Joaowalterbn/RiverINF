@@ -1,8 +1,8 @@
 #include "config_function.h"
 
-void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, Rectangle aviao, int *pontos, int *vidas, int *x, int *y){
+void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rectangle aviao, int *pontos, int *vidas, int *x, int *y){
     for(int i = 0; i < nblocos; i++){
-        int flag = v[i].flag, tiro_ativo = projetil.flag, life = *vidas, pts = *pontos;
+        int flag = v[i].flag, tiro_ativo = *flag_tiro, life = *vidas, pts = *pontos;
         if(flag){
             char c = v[i].tipo;
             Rectangle atual = v[i].ini;
@@ -24,6 +24,7 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, Rectangle aviao, int
                         }
                          if(CheckCollisionRecs(projetil.sprite_tiro, atual)&& tiro_ativo){
                             v[i].flag = 0;
+                            tiro_ativo = 0;
                             pts += PTS_H;//pontos helicoptero;
                             altera_variaveis(pontos, pts);
                          }
@@ -37,6 +38,7 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, Rectangle aviao, int
                         }
                          if(CheckCollisionRecs(projetil.sprite_tiro, atual)&& tiro_ativo){
                             v[i].flag -= 1;
+                            tiro_ativo = 0;
                             int flagPonte = v[i].flag;
                             if(flagPonte <= 0){
                                 pts += PTS_P;//pontos Ponte;
@@ -45,6 +47,8 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, Rectangle aviao, int
                          }
                         break;
             }
+            altera_variaveis(flag_tiro, tiro_ativo);
+
         }
     }
 }

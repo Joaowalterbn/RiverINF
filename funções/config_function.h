@@ -76,7 +76,7 @@ SPRITE definir_sprites(int x, int y, Texture2D txt, char tipo);
 
 SPRITE definir_terrenos(int x, int y, Texture2D txt, char tipo);
 
-void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, Rectangle aviao, int *pontos, int *vidas, int *x, int *y);
+void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rectangle aviao, int *pontos, int *vidas, int *x, int *y);
 
 void altera_variaveis(int *v, int novo);
 

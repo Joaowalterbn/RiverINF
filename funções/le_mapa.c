@@ -62,7 +62,7 @@ void desenhar_mapa(int nblocos, SPRITE v[], Texture2D T, Texture2D X)
                         case'X':
                                 DrawRectangle(v[i].ini.x, v[i].ini.y, 40, 40, DARKBLUE);
                                 DrawTexture(X, v[i].ini.x - ((float)X.width - (float)X.width * 0.8) / 2.0f, v[i].ini.y - ((float)X.height - (float)X.height * 0.8) / 2.0f, WHITE);
-                                DrawRectangleRec(v[i].ini,Fade(RED, 0.5f));
+                                //DrawRectangleRec(v[i].ini,Fade(RED, 0.5f));
                                 break;
 
                     }

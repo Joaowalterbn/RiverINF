@@ -66,16 +66,16 @@ int main()
                         quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
                         break;
                     case FASE2:
-                        quant_hitboxs = le_mapa("mapas/mapa2.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
+                        quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
                         break;
                     case FASE3:
-                        quant_hitboxs = le_mapa("mapas/mapa3.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
+                        quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
                         break;
                     case FASE4:
-                        quant_hitboxs = le_mapa("mapas/mapa4.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
+                        quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
                         break;
                     case FASE5:
-                        quant_hitboxs = le_mapa("mapas/mapa5.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
+                        quant_hitboxs = le_mapa("mapas/mapa1.txt", vetor_hitboxs, current_plane_texture, terra, heli_1, &x_aviao, &y_aviao);
                         break;
                     } mapa_carregado = true;
                 }
@@ -135,7 +135,13 @@ int main()
             DrawText(TextFormat("Score: %i", pontuacao), 520, 10, 30, YELLOW);
 
             EndDrawing();
-            checar_colisao(vetor_hitboxs, quant_hitboxs, projetil, player_hitbox, &pontuacao, &vidas, &x_aviao, &y_aviao);
+            checar_colisao(vetor_hitboxs, quant_hitboxs, projetil, &(projetil.flag), player_hitbox, &pontuacao, &vidas, &x_aviao, &y_aviao);
+            if(CheckCollisionRecs(hud, player_hitbox)) {
+                    tela_atual = TROCA;
+                    fase_atual++;
+                    mapa_carregado = false;
+                    nivel++;
+            }
             break;
         }
         case RANK:
