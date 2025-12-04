@@ -37,6 +37,9 @@
 		<Unit filename="funções/altera_variaveis.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="funções/att_inimigos.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="funções/checar_colisao.c">
 			<Option compilerVar="CC" />
 		</Unit>
