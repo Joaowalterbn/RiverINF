@@ -1,6 +1,6 @@
 #include "config_function.h"
 
-int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X, Texture2D G, Texture2D N, Texture2D J, int *x_aviao, int *y_aviao)
+int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X, Texture2D G, Texture2D N, Texture2D J,Texture2D S, Texture2D B, Texture2D H, int *x_aviao, int *y_aviao)
 {
     FILE *fp = fopen(nome_arq, "r");
     int posX = 0;
@@ -15,7 +15,7 @@ int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X, T
             switch(fgetc(fp))
             {
             case'A':
-                    x = posX;
+                x = posX;
                 y = posY - 20;
                 altera_variaveis(x_aviao, x);
                 altera_variaveis(y_aviao, y);
@@ -50,6 +50,21 @@ int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X, T
                 i++;
                 posX += 40;
                 break;
+            case'B':
+                v[i] = definir_terrenos(posX, posY, B, 'B', 3);
+                i++;
+                posX += 40;
+                break;
+            case'S':
+                v[i] = definir_terrenos(posX, posY, S, 'S', 1);
+                i++;
+                posX += 40;
+                break;
+            case'H':
+                v[i] = definir_terrenos(posX, posY, H, 'H', 1);
+                i++;
+                posX += 40;
+                break;
             case'\n':
                 posX = 0;
                 posY += 40;
@@ -58,12 +73,13 @@ int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X, T
         }
     }
     else printf("Erro!\n");
+
     fclose(fp);
 
     return i;
 }
 
-void desenhar_mapa(int nblocos, SPRITE v[], Texture2D T, Texture2D X, Texture2D G, Texture2D N, Texture2D J)
+void desenhar_mapa(int nblocos, SPRITE v[], Texture2D T, Texture2D X, Texture2D G, Texture2D N, Texture2D J, Texture2D S, Texture2D B, Texture2D H)
 {
     char c;
     int flag;
@@ -107,6 +123,15 @@ void desenhar_mapa(int nblocos, SPRITE v[], Texture2D T, Texture2D X, Texture2D 
             case'J':
                 DrawTexture(J, v[i].ini.x - ((float)J.width - (float)J.width * 0.8) / 2.0f, v[i].ini.y - ((float)J.height - (float)J.height * 0.8) / 2.0f, WHITE);
                 //DrawRectangleRec(v[i].ini,Fade(RED, 0.5f));
+                break;
+            case'S':
+                DrawTexture(S, v[i].ini.x, v[i].ini.y, WHITE);
+                break;
+            case'B':
+                DrawTexture(B, v[i].ini.x, v[i].ini.y, WHITE);
+                break;
+            case'H':
+                DrawTexture(H, v[i].ini.x, v[i].ini.y, WHITE);
                 break;
             }
         }
