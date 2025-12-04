@@ -1,52 +1,127 @@
 #include "config_function.h"
 
-void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rectangle aviao, int *pontos, int *vidas, int *x, int *y){
-    for(int i = 0; i < nblocos; i++){
+void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rectangle aviao, int *pontos, int *vidas, int *x, int *y, float *gas, Texture2D exp)
+{
+    for(int i = 0; i < nblocos; i++)
+    {
         int flag = v[i].flag, tiro_ativo = *flag_tiro, life = *vidas, pts = *pontos;
-        if(flag){
+        if(flag)
+        {
             char c = v[i].tipo;
             Rectangle atual = v[i].ini;
-            switch(c){
-                case'T':
-                    if(CheckCollisionRecs(aviao, atual)){
-                            life--;
-                            altera_variaveis(vidas, life);
-                            altera_variaveis(x, 450);
-                            altera_variaveis(y, 750);
+            switch(c)
+            {
+            case'T':
+                if(CheckCollisionRecs(aviao, atual))
+                {
+                    DrawTexture(exp, atual.x, atual.y, WHITE);
+                    life--;
+                    altera_variaveis(vidas, life);
+                    altera_variaveis(x, 450);
+                    altera_variaveis(y, 750);
+                }
+                break;
+            case'G':
+                if(CheckCollisionRecs(aviao, atual))
+                {
+                    if(*gas < 99.5) *gas = *gas + 0.5;
+                }
+                if(CheckCollisionRecs(projetil.sprite_tiro, atual)&& tiro_ativo)
+                {
+                    v[i].flag-= 1;
+                    tiro_ativo = 0;
+                    if(v[i].flag <= 0)
+                    {
+                        DrawTexture(exp, atual.x, atual.y, WHITE);
+                        pts += PTS_G;
+                        altera_variaveis(pontos, pts);
                     }
-                    break;
-                case'X':
-                        if(CheckCollisionRecs(aviao, atual)){
-                            life--;
-                            altera_variaveis(vidas, life);
-                            altera_variaveis(x, 450);
-                            altera_variaveis(y, 750);
-                        }
-                         if(CheckCollisionRecs(projetil.sprite_tiro, atual)&& tiro_ativo){
-                            v[i].flag-= 1;
-                            tiro_ativo = 0;
-                            if(v[i].flag <= 0){
-                                pts += PTS_H;//pontos helicoptero;
-                                altera_variaveis(pontos, pts);
-                            }
-                         }
-                        break;
-                case'P':
-                        if(CheckCollisionRecs(aviao, atual)){
-                            life--;
-                            altera_variaveis(vidas, life);
-                            altera_variaveis(x, 450);
-                            altera_variaveis(y, 750);
-                        }
-                         if(CheckCollisionRecs(projetil.sprite_tiro, atual)&& tiro_ativo){
-                            v[i].flag -= 1;
-                            tiro_ativo = 0;
-                            if(v[i].flag <= 0){
-                                pts += PTS_P;//pontos Ponte;
-                                altera_variaveis(pontos, pts);
-                            }
-                         }
-                        break;
+                }
+                break;
+            case'X':
+                if(CheckCollisionRecs(aviao, atual))
+                {
+                    DrawTexture(exp, atual.x, atual.y, WHITE);
+                    life--;
+                    altera_variaveis(vidas, life);
+                    altera_variaveis(x, 450);
+                    altera_variaveis(y, 750);
+                }
+                if(CheckCollisionRecs(projetil.sprite_tiro, atual)&& tiro_ativo)
+                {
+                    v[i].flag-= 1;
+                    tiro_ativo = 0;
+                    if(v[i].flag <= 0)
+                    {
+                        DrawTexture(exp, atual.x, atual.y, WHITE);
+                        pts += PTS_H;//pontos helicoptero;
+                        altera_variaveis(pontos, pts);
+                    }
+                }
+                break;
+            case'J':
+                if(CheckCollisionRecs(aviao, atual))
+                {
+                    DrawTexture(exp, atual.x, atual.y, WHITE);
+                    life--;
+                    altera_variaveis(vidas, life);
+                    altera_variaveis(x, 450);
+                    altera_variaveis(y, 750);
+                }
+                if(CheckCollisionRecs(projetil.sprite_tiro, atual)&& tiro_ativo)
+                {
+                    v[i].flag-= 1;
+                    tiro_ativo = 0;
+                    if(v[i].flag <= 0)
+                    {
+                        DrawTexture(exp, atual.x, atual.y, WHITE);
+                        pts += PTS_J;//pontos jato;
+                        altera_variaveis(pontos, pts);
+                    }
+                }
+                break;
+                case'N':
+                if(CheckCollisionRecs(aviao, atual))
+                {
+                    DrawTexture(exp, atual.x, atual.y, WHITE);
+                    life--;
+                    altera_variaveis(vidas, life);
+                    altera_variaveis(x, 450);
+                    altera_variaveis(y, 750);
+                }
+                if(CheckCollisionRecs(projetil.sprite_tiro, atual)&& tiro_ativo)
+                {
+                    v[i].flag-= 1;
+                    tiro_ativo = 0;
+                    if(v[i].flag <= 0)
+                    {
+                        DrawTexture(exp, atual.x, atual.y, WHITE);
+                        pts += PTS_J;//pontos jato;
+                        altera_variaveis(pontos, pts);
+                    }
+                }
+                break;
+            case'P':
+                if(CheckCollisionRecs(aviao, atual))
+                {
+                    DrawTexture(exp, atual.x, atual.y, WHITE);
+                    life--;
+                    altera_variaveis(vidas, life);
+                    altera_variaveis(x, 450);
+                    altera_variaveis(y, 750);
+                }
+                if(CheckCollisionRecs(projetil.sprite_tiro, atual)&& tiro_ativo)
+                {
+                    v[i].flag -= 1;
+                    tiro_ativo = 0;
+                    if(v[i].flag <= 0)
+                    {
+                        DrawTexture(exp, atual.x, atual.y, WHITE);
+                        pts += PTS_P;//pontos Ponte;
+                        altera_variaveis(pontos, pts);
+                    }
+                }
+                break;
             }
             altera_variaveis(flag_tiro, tiro_ativo);
 
