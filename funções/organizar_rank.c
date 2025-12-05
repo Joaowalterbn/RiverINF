@@ -1,6 +1,35 @@
 #include "config_function.h"
+//Função le arquivo bem simples que pega os dados e coloca num array
+void le_arquivo(char nome_arq[], JOGADOR top5[])
+{
+    FILE *fp = fopen(nome_arq, "rb");
+    if(fp != NULL)
+    {
+        if(fread(top5, sizeof(JOGADOR), 5, fp) != 5) erro_load();
 
-void org_top5(JOGADOR r[MAXSCORES], int pts_novos, int ind)
+    }
+
+    fclose(fp);
+}
+
+//Função que escreve os dados no arquivo binario
+void salva_arquivo(char nome_arq[], JOGADOR top5[])
+{
+    FILE *fp = fopen(nome_arq, "wb");
+    if(fp != NULL)
+    {
+        if(fwrite(top5, sizeof(JOGADOR), 5, fp) != 5)
+        {
+            erro_load();
+        }
+
+    }else erro_load();
+
+    fclose(fp);
+}
+
+//Função que troca de Lugar e atribui o novo jogador no rank
+void org_top5(JOGADOR r[], int pts_novos, int ind)
 {
     JOGADOR novoj, temp1, temp2;
     novoj.pontos = pts_novos;
@@ -18,10 +47,9 @@ void org_top5(JOGADOR r[MAXSCORES], int pts_novos, int ind)
 
 }
 
-void organizar_rank(int pts_atual)
+//Função mais completa da anterior que já salva o arquivo
+void organizar_rank(int pts_atual, JOGADOR ranking[])
 {
-    JOGADOR ranking[MAXSCORES];
-    le_arquivo("top5.bin", ranking);
     int i = 0;
     bool flag = true;
     while(i < 5 && flag)
@@ -29,9 +57,9 @@ void organizar_rank(int pts_atual)
         if(pts_atual > ranking[i].pontos)
         {
             org_top5(ranking, pts_atual, i);
-            salva_arquivo("top5.bin", ranking);
+            salva_arquivo("highscore.bin", ranking);
             flag = false;
         }
-
+        i++;
     }
 }

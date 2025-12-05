@@ -11,7 +11,7 @@
 #define TAM_RANK 50
 #define TAM_TITLE 130
 #define MAXSCORES 5
-#define ARQ_NOME "top5.bin"
+#define ARQ_NOME "highscore.bin"
 #define X_TITLE 100
 #define PTS_H 60
 #define PTS_P 200
@@ -68,7 +68,7 @@ Rectangle print_rank(void);
 
 void erro_load(void);
 
-void organizar_rank(int pts_atual);
+void organizar_rank(int pts_atual, JOGADOR ranking[]);
 
 char pos_game(int pts);
 
@@ -88,7 +88,7 @@ SPRITE definir_sprites(int x, int y, Texture2D txt, char tipo, int flag);
 
 SPRITE definir_terrenos(int x, int y, Texture2D txt, char tipo, int flag);
 
-void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rectangle aviao, int *pontos, int *vidas, int *x, int *y, float *gas, Texture2D exp, Sound bomb);
+void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rectangle aviao, int *pontos, int *vidas, int *x, int *y, float *gas, Texture2D exp, Sound bomb, int *invulnerabilidade);
 
 void altera_variaveis(int *v, int novo);
 

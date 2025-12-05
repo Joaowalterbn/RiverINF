@@ -1,5 +1,5 @@
 #include "config_function.h"
-
+//Função que lê os .txt e gera o mapa, colocando no array das hitbox todos os terrenos e inimigos e que ainda posiciona o avião
 int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X, Texture2D G, Texture2D N, Texture2D J,Texture2D S, Texture2D B, Texture2D H, int *x_aviao, int *y_aviao)
 {
     FILE *fp = fopen(nome_arq, "r");
@@ -79,6 +79,8 @@ int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X, T
     return i;
 }
 
+//Função que de fato desenha o mapa após ele ser lido pela anterior
+//Desenha a partir da hitbox, por isso inverti a lógica de diminuir a hitbox utilizando o inverso da fórmula para atribuir x e y nos inimigos
 void desenhar_mapa(int nblocos, SPRITE v[], Texture2D T, Texture2D X, Texture2D G, Texture2D N, Texture2D J, Texture2D S, Texture2D B, Texture2D H)
 {
     char c;

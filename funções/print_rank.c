@@ -1,5 +1,5 @@
 #include "config_function.h"
-
+//Função que printa o ranking e retorna o retangulo do botão voltar
 Rectangle print_rank(void)
 {
     int z = 100;

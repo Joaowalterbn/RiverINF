@@ -1,6 +1,9 @@
 #include "config_function.h"
-
-void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rectangle aviao, int *pontos, int *vidas, int *x, int *y, float *gas, Texture2D exp, Sound bomb)
+//Função que checa as colisões do tiro com os inimigos e do avião com todas as estruturas e inimigos
+//Tira vidas dos inimigos e do jogador
+//Faz as animações de explosões e ainda toca os audios
+//Não precisa retornar nada, pois faz uso de alterações através de ponteiros
+void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rectangle aviao, int *pontos, int *vidas, int *x, int *y, float *gas, Texture2D exp, Sound bomb, int *invulnerabilidade_timer)
 {
     for(int i = 0; i < nblocos; i++)
     {
@@ -12,7 +15,7 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rect
             switch(c)
             {
             case'T':
-                if(CheckCollisionRecs(aviao, atual))
+                if(CheckCollisionRecs(aviao, atual)&& *invulnerabilidade_timer <= 0)
                 {
                     DrawTexture(exp, atual.x, atual.y, WHITE);
                     PlaySound(bomb);
@@ -20,12 +23,13 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rect
                     altera_variaveis(vidas, life);
                     altera_variaveis(x, 450);
                     altera_variaveis(y, 750);
+                    altera_variaveis(invulnerabilidade_timer, 60);
                 }
                 break;
             case'G':
                 if(CheckCollisionRecs(aviao, atual))
                 {
-                    if(*gas < 99.5) *gas = *gas + 0.5;
+                    if(*gas <= 99) *gas = *gas + 1;
                 }
                 if(CheckCollisionRecs(projetil.sprite_tiro, atual)&& tiro_ativo)
                 {
@@ -41,13 +45,14 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rect
                 }
                 break;
             case'X':
-                if(CheckCollisionRecs(aviao, atual))
+                if(CheckCollisionRecs(aviao, atual)&& *invulnerabilidade_timer <= 0)
                 {
                     DrawTexture(exp, atual.x, atual.y, WHITE);
                     life--;
                     altera_variaveis(vidas, life);
                     altera_variaveis(x, 450);
                     altera_variaveis(y, 750);
+                    altera_variaveis(invulnerabilidade_timer, 60);
                 }
                 if(CheckCollisionRecs(projetil.sprite_tiro, atual)&& tiro_ativo)
                 {
@@ -63,7 +68,7 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rect
                 }
                 break;
             case'J':
-                if(CheckCollisionRecs(aviao, atual))
+                if(CheckCollisionRecs(aviao, atual)&& *invulnerabilidade_timer <= 0)
                 {
                     DrawTexture(exp, atual.x, atual.y, WHITE);
                     PlaySound(bomb);
@@ -71,6 +76,7 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rect
                     altera_variaveis(vidas, life);
                     altera_variaveis(x, 450);
                     altera_variaveis(y, 750);
+                    altera_variaveis(invulnerabilidade_timer, 60);
                 }
                 if(CheckCollisionRecs(projetil.sprite_tiro, atual)&& tiro_ativo)
                 {
@@ -86,13 +92,14 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rect
                 }
                 break;
                 case'N':
-                if(CheckCollisionRecs(aviao, atual))
+                if(CheckCollisionRecs(aviao, atual)&& *invulnerabilidade_timer <= 0)
                 {
                     DrawTexture(exp, atual.x, atual.y, WHITE);
                     life--;
                     altera_variaveis(vidas, life);
                     altera_variaveis(x, 450);
                     altera_variaveis(y, 750);
+                    altera_variaveis(invulnerabilidade_timer, 60);
                 }
                 if(CheckCollisionRecs(projetil.sprite_tiro, atual)&& tiro_ativo)
                 {
@@ -108,7 +115,7 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rect
                 }
                 break;
             case'B':
-                if(CheckCollisionRecs(aviao, atual))
+                if(CheckCollisionRecs(aviao, atual)&& *invulnerabilidade_timer <= 0)
                 {
                     DrawTexture(exp, atual.x, atual.y, WHITE);
                     PlaySound(bomb);
@@ -116,6 +123,7 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rect
                     altera_variaveis(vidas, life);
                     altera_variaveis(x, 450);
                     altera_variaveis(y, 750);
+                    altera_variaveis(invulnerabilidade_timer, 60);
                 }
                 if(CheckCollisionRecs(projetil.sprite_tiro, atual)&& tiro_ativo)
                 {
