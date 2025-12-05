@@ -39,7 +39,7 @@
 1764805368 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\definir_sprites.c
 	"config_function.h"
 
-1764878965 c:\users\joão walter\documents\trabalhos\riverinf\funções\config_function.h
+1764902517 c:\users\joão walter\documents\trabalhos\riverinf\funções\config_function.h
 	"raylib.h"
 	<stdio.h>
 	<string.h>
@@ -50,26 +50,26 @@
 1764815308 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\fshoot.c
 	"config_function.h"
 
-1764875850 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\le_arquivo.c
+1764896742 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\le_arquivo.c
 	"config_function.h"
 
-1764879093 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\main.c
+1764902693 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\main.c
 	"config_function.h"
 
-1764878050 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\menu.c
+1764897368 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\menu.c
 	"config_function.h"
 	"config_function.h"
 
 1764878965 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\move_player.c
 	"config_function.h"
 
-1764877751 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\organizar_rank.c
+1764897055 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\organizar_rank.c
 	"config_function.h"
 
 1764626752 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\print_rank.c
 	"config_function.h"
 
-1764878292 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\salva_arquivo.c
+1764896742 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\salva_arquivo.c
 	"config_function.h"
 
 1764532719 source:c:\users\rafael droves\documents\faculdade\riverinf\funções\definir_sprites.c
@@ -106,7 +106,7 @@
 1764822408 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\le_mapa.c
 	"config_function.h"
 
-1764818623 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\checar_colisao.c
+1764902538 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\checar_colisao.c
 	"config_function.h"
 
 1764805368 source:c:\users\joão walter\documents\trabalhos\riverinf\funções\altera_variaveis.c

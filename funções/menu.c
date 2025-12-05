@@ -146,7 +146,7 @@ char pos_game(int pts)
     BeginDrawing();
     ClearBackground(DARKBLUE);
     DrawText("GAME OVER", 480 - MeasureText("GAME OVER", TAM_TITLE)/2, 50, TAM_TITLE, YELLOW);
-    DrawText(TextFormat("Score: %d", pts), 480 - MeasureText(TextFormat("Score: %d", pts), TAM_TITLE)/2, 230, TAM_DEFAULT, YELLOW);
+    DrawText(TextFormat("Score: %d", pts), 480 - MeasureText(TextFormat("Score: %d", pts), TAM_DEFAULT)/2, 230, TAM_DEFAULT, YELLOW);
 
     DrawText("Novo jogo", X_TITLE, 340, TAM_DEFAULT, YELLOW);
     Rectangle novo_jogo =

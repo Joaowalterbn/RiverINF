@@ -5,11 +5,11 @@ int main()
     GameScreen tela_atual = MENU;
     Fase fase_atual;
     JOGADOR top_five[MAXSCORES];
-    FIlE *rank = le_arquivo("top5.bin");
 
+    le_arquivo("top5.bin", top_five);
 
     SPRITE vetor_hitboxs[480] = {0};
-    int quant_hitboxs, deslocamento = 0, inv = 0;
+    int quant_hitboxs, deslocamento = 0, inv = 0, invulnerabilidade;
     int x_aviao, y_aviao, pontuacao, vidas, nivel, velocidade_ini, velocidade;
     float combustivel;
     bool mapa_carregado;
@@ -107,98 +107,105 @@ int main()
                     break;
                 }
                 mapa_carregado = true;
+                tela_atual = GAMEPLAY;
             }
         }
-
+        break;
         case GAMEPLAY:
         {
-
-            player_hitbox = move_player(
-                                &x_aviao,
-                                &y_aviao,
-                                &current_plane_texture,
-                                planeCenter,
-                                planeLeft,
-                                planeRight,
-                                velocidade
-                            );
-            //Analisar o gasto de combustivel
-            deslocamento += 4;
-            if(deslocamento >= 80)
-            {
-                deslocamento -= 80;
-                combustivel -= 1;
-            }
-
-            if(!projetil.flag)
-            {
-                if(IsKeyPressed(KEY_SPACE))
-                    projetil = fshoot(x_aviao, y_aviao, tiro);
-            }
-
             if(vidas <= 0 || combustivel <= 0)
             {
                 tela_atual = ENDGAME;
                 mapa_carregado = false;
-                organizar_rank(pontuacao);
+                organizar_rank(pontuacao, top_five);
             }
-
-            BeginDrawing();
-            ClearBackground(DARKBLUE);
-            desenhar_mapa(quant_hitboxs, vetor_hitboxs, terra, heli_1, posto, navio_atual, jet, street, bridge, house);
-
-            DrawTexture(current_plane_texture, x_aviao, y_aviao, WHITE);
-            //DrawRectangleRec(player_hitbox, Fade(RED, 0.5f));
-
-
-            //Desenha o projétil
-            if(projetil.flag)
+            else
             {
-                DrawTexture(tiro, projetil.sprite_tiro.x, projetil.sprite_tiro.y, WHITE);
-                PlaySound(zap);
-                projetil.sprite_tiro.y -= 30;
-                if(projetil.sprite_tiro.y < 0) projetil.flag = 0;
-            }
+                if(invulnerabilidade > 0) invulnerabilidade--;
 
-            //Desenha a hud
-            DrawRectangleRec(hud, BLACK);
-            DrawText("Vidas: ", 10, 10, 30, YELLOW);
-            for(int life = 0; life < vidas; life++)
-            {
-                DrawTexture(vida, (life * 30 + MeasureText("Vidas: ", 30)+ 10), 10, WHITE);
-            }
-
-            DrawText(TextFormat("Nivel: %i", nivel), 210, 10, 30, YELLOW);
-            DrawText(TextFormat("Fuel: %.0f", combustivel), 360, 10, 30, YELLOW);
-            DrawText(TextFormat("Score: %i", pontuacao), 520, 10, 30, YELLOW);
-
-
-            checar_colisao(vetor_hitboxs, quant_hitboxs, projetil, &(projetil.flag), player_hitbox, &pontuacao, &vidas, &x_aviao, &y_aviao, &combustivel, explosao, exp);
-            EndDrawing();
-            if(CheckCollisionRecs(hud, player_hitbox))
-            {
-                tela_atual = TROCA;
-                if(fase_atual == FASE_FINAL) {
-                    velocidade_ini += 2;
-                    velocidade += 1;
-                }
-                x_aviao = 450;
-                y_aviao = 800;
-                fase_atual = (fase_atual + 1)%5;
-                mapa_carregado = false;
-                nivel += 1;
-            }
-            att_inimigos(vetor_hitboxs, quant_hitboxs, velocidade_ini);
-            if(inv%120 == 0) navio_atual = navio_inv;
-            else if (inv%120 == 60)navio_atual = navio;
-            inv++;
-
-            if (IsKeyDown(KEY_P))
+                player_hitbox = move_player(
+                                    &x_aviao,
+                                    &y_aviao,
+                                    &current_plane_texture,
+                                    planeCenter,
+                                    planeLeft,
+                                    planeRight,
+                                    velocidade
+                                );
+                //Analisar o gasto de combustivel
+                deslocamento += 4;
+                if(deslocamento >= 80)
                 {
-                   tela_atual = PAUSE;
+                    deslocamento -= 80;
+                    combustivel -= 1;
                 }
-            break;
+
+                if(!projetil.flag)
+                {
+                    if(IsKeyPressed(KEY_SPACE))
+                        projetil = fshoot(x_aviao, y_aviao, tiro);
+                }
+
+                BeginDrawing();
+                ClearBackground(DARKBLUE);
+                desenhar_mapa(quant_hitboxs, vetor_hitboxs, terra, heli_1, posto, navio_atual, jet, street, bridge, house);
+
+                DrawTexture(current_plane_texture, x_aviao, y_aviao, WHITE);
+                //DrawRectangleRec(player_hitbox, Fade(RED, 0.5f));
+
+
+                //Desenha o projétil
+                if(projetil.flag)
+                {
+                    DrawTexture(tiro, projetil.sprite_tiro.x, projetil.sprite_tiro.y, WHITE);
+                    PlaySound(zap);
+                    projetil.sprite_tiro.y -= 30;
+                    if(projetil.sprite_tiro.y < 0) projetil.flag = 0;
+                }
+
+                //Desenha a hud
+                DrawRectangleRec(hud, BLACK);
+                DrawText("Vidas: ", 10, 10, 30, YELLOW);
+                for(int life = 0; life < vidas; life++)
+                {
+                    DrawTexture(vida, (life * 30 + MeasureText("Vidas: ", 30)+ 10), 10, WHITE);
+                }
+
+                DrawText(TextFormat("Nivel: %i", nivel), 210, 10, 30, YELLOW);
+                DrawText(TextFormat("Fuel: %.0f", combustivel), 360, 10, 30, YELLOW);
+                DrawText(TextFormat("Score: %i", pontuacao), 520, 10, 30, YELLOW);
+
+
+                checar_colisao(vetor_hitboxs, quant_hitboxs, projetil, &(projetil.flag), player_hitbox, &pontuacao, &vidas, &x_aviao, &y_aviao, &combustivel, explosao, exp, &invulnerabilidade);
+                EndDrawing();
+
+                if(CheckCollisionRecs(hud, player_hitbox))
+                {
+                    tela_atual = TROCA;
+                    if(fase_atual == FASE_FINAL)
+                    {
+                        velocidade_ini += 2;
+                        velocidade += 1;
+                    }
+                    x_aviao = 450;
+                    y_aviao = 800;
+                    fase_atual = (fase_atual + 1)%5;
+                    mapa_carregado = false;
+                    nivel += 1;
+                }
+
+                att_inimigos(vetor_hitboxs, quant_hitboxs, velocidade_ini);
+                if(inv%120 == 0) navio_atual = navio_inv;
+                else if (inv%120 == 60)navio_atual = navio;
+                inv++;
+
+                if (IsKeyDown(KEY_P))
+                {
+                    tela_atual = PAUSE;
+                }
+            }
         }
+        break;
         case PAUSE:
             char op = pause();
             if(op == 'm')
@@ -226,23 +233,29 @@ int main()
         }
         break;
         case ENDGAME:
+        {
+            char op = pos_game(pontuacao);
+            if(op == 'm')
             {
-                char op = pos_game(pontuacao);
-                if(op == 'm')
-                {
-                    tela_atual = MENU;
-                }
-                else if(op == 'g')
-                {
-                    tela_atual = GAMEPLAY;
-                }
-                else if(op == 'r')
-                {
-                    tela_atual = RANK;
-                }
-                break;
+                tela_atual = MENU;
             }
-
+            else if(op == 'g')
+            {
+                tela_atual = TROCA;
+                velocidade = 2;
+                vidas = 3;
+                nivel = 1;
+                pontuacao = 0;
+                combustivel = 100;
+                fase_atual = 0;
+                velocidade_ini = 3;
+            }
+            else if(op == 'r')
+            {
+                tela_atual = RANK;
+            }
+        }
+        break;
         }//fechamento do switch
     }
 
