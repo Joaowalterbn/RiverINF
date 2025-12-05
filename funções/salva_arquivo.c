@@ -1,6 +1,6 @@
 #include "config_function.h"
 
-void salva_arquivo(char nome_arq[], JOGADOR top5[MAXSCORES])
+void salva_arquivo(char nome_arq[], JOGADOR top5[])
 {
     FILE *fp = fopen(nome_arq, "wb");
     if(fp != NULL)
@@ -9,7 +9,7 @@ void salva_arquivo(char nome_arq[], JOGADOR top5[MAXSCORES])
         {
         } erro_load();
 
-    }
-    erro_load();
+    }else erro_load();
+
     fclose(fp);
 }

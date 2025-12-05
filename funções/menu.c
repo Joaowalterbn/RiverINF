@@ -3,9 +3,11 @@
 char menu(void)
 {
     char op;
+
     BeginDrawing();
     ClearBackground(DARKBLUE);
     DrawText("RIVERINF", X_TITLE, 100, TAM_TITLE, YELLOW);
+
     DrawText("Novo jogo", X_TITLE, 230, TAM_DEFAULT, YELLOW);
     Rectangle novo_jogo =
     {
@@ -99,7 +101,7 @@ char pause(void)
         MeasureText("Sair", TAM_DEFAULT),
         TAM_DEFAULT
     };
-    EndDrawing();
+     EndDrawing();
 
 
     if (IsCursorHidden())
@@ -129,6 +131,77 @@ char pause(void)
         if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)||IsMouseButtonPressed(MOUSE_LEFT_BUTTON)||IsMouseButtonDown(MOUSE_LEFT_BUTTON))
         {
             op = 's';
+            return op;
+        }
+    }
+
+
+
+}
+
+char pos_game(int pts)
+{
+    char op;
+
+    BeginDrawing();
+    ClearBackground(DARKBLUE);
+    DrawText("GAME OVER", 480 - MeasureText("GAME OVER", TAM_TITLE)/2, 50, TAM_TITLE, YELLOW);
+    DrawText(TextFormat("Score: %d", pts), 480 - MeasureText(TextFormat("Score: %d", pts), TAM_TITLE)/2, 230, TAM_DEFAULT, YELLOW);
+
+    DrawText("Novo jogo", X_TITLE, 340, TAM_DEFAULT, YELLOW);
+    Rectangle novo_jogo =
+    {
+        X_TITLE,
+        340,
+        MeasureText("Novo jogo", TAM_DEFAULT),
+        TAM_DEFAULT
+    };
+    DrawText("Ranking", 100, 450, TAM_DEFAULT, YELLOW);
+    Rectangle ranking =
+    {
+        X_TITLE,
+        450,
+        MeasureText("Ranking", TAM_DEFAULT),
+        TAM_DEFAULT
+    };
+    DrawText("MENU", 100, 560, TAM_DEFAULT, YELLOW);
+    Rectangle m =
+    {
+        X_TITLE,
+        560,
+        MeasureText("MENU", TAM_DEFAULT),
+        TAM_DEFAULT
+    };
+    EndDrawing();
+
+
+    if (IsCursorHidden())
+    {
+        ShowCursor();
+    }
+
+    if (CheckCollisionPointRec(GetMousePosition(), novo_jogo))
+    {
+        if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)||IsMouseButtonPressed(MOUSE_LEFT_BUTTON)||IsMouseButtonDown(MOUSE_LEFT_BUTTON))
+        {
+            op = 'g';
+            return op;
+        }
+    }
+    if (CheckCollisionPointRec(GetMousePosition(), ranking))
+    {
+        if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)||IsMouseButtonPressed(MOUSE_LEFT_BUTTON)||IsMouseButtonDown(MOUSE_LEFT_BUTTON))
+        {
+            op = 'r';
+            return op;
+        }
+    }
+
+    if (CheckCollisionPointRec(GetMousePosition(), m))
+    {
+        if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)||IsMouseButtonPressed(MOUSE_LEFT_BUTTON)||IsMouseButtonDown(MOUSE_LEFT_BUTTON))
+        {
+            op = 'm';
             return op;
         }
     }

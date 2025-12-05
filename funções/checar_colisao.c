@@ -1,6 +1,6 @@
 #include "config_function.h"
 
-void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rectangle aviao, int *pontos, int *vidas, int *x, int *y, float *gas, Texture2D exp)
+void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rectangle aviao, int *pontos, int *vidas, int *x, int *y, float *gas, Texture2D exp, Sound bomb)
 {
     for(int i = 0; i < nblocos; i++)
     {
@@ -15,6 +15,7 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rect
                 if(CheckCollisionRecs(aviao, atual))
                 {
                     DrawTexture(exp, atual.x, atual.y, WHITE);
+                    PlaySound(bomb);
                     life--;
                     altera_variaveis(vidas, life);
                     altera_variaveis(x, 450);
@@ -33,6 +34,7 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rect
                     if(v[i].flag <= 0)
                     {
                         DrawTexture(exp, atual.x, atual.y, WHITE);
+                        PlaySound(bomb);
                         pts += PTS_G;
                         altera_variaveis(pontos, pts);
                     }
@@ -54,6 +56,7 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rect
                     if(v[i].flag <= 0)
                     {
                         DrawTexture(exp, atual.x, atual.y, WHITE);
+                        PlaySound(bomb);
                         pts += PTS_H;//pontos helicoptero;
                         altera_variaveis(pontos, pts);
                     }
@@ -63,6 +66,7 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rect
                 if(CheckCollisionRecs(aviao, atual))
                 {
                     DrawTexture(exp, atual.x, atual.y, WHITE);
+                    PlaySound(bomb);
                     life--;
                     altera_variaveis(vidas, life);
                     altera_variaveis(x, 450);
@@ -75,6 +79,7 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rect
                     if(v[i].flag <= 0)
                     {
                         DrawTexture(exp, atual.x, atual.y, WHITE);
+                        PlaySound(bomb);
                         pts += PTS_J;//pontos jato;
                         altera_variaveis(pontos, pts);
                     }
@@ -96,15 +101,17 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rect
                     if(v[i].flag <= 0)
                     {
                         DrawTexture(exp, atual.x, atual.y, WHITE);
+                        PlaySound(bomb);
                         pts += PTS_J;//pontos jato;
                         altera_variaveis(pontos, pts);
                     }
                 }
                 break;
-            case'P':
+            case'B':
                 if(CheckCollisionRecs(aviao, atual))
                 {
                     DrawTexture(exp, atual.x, atual.y, WHITE);
+                    PlaySound(bomb);
                     life--;
                     altera_variaveis(vidas, life);
                     altera_variaveis(x, 450);

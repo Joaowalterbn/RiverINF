@@ -5,6 +5,7 @@
 
 #include "raylib.h"
 #include <stdio.h>
+#include <string.h>
 
 #define TAM_DEFAULT 90
 #define TAM_RANK 50
@@ -34,7 +35,7 @@ typedef enum Fase
     FASE2,
     FASE3,
     FASE4,
-    FASE5,
+    FASE_FINAL,
 
 } Fase;
 
@@ -67,13 +68,19 @@ Rectangle print_rank(void);
 
 void erro_load(void);
 
-void le_arquivo(char nome_arq[], JOGADOR top5[MAXSCORES]);
+void organizar_rank(int pts_atual);
 
-void salva_arquivo(char nome_arq[], JOGADOR top5[MAXSCORES]);
+char pos_game(int pts);
 
-int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X, Texture2D G, Texture2D N, Texture2D J, int *x_aviao, int *y_aviao);
+void org_top5(JOGADOR r[MAXSCORES], int pts_novos, int ind);
 
-void desenhar_mapa(int nblocos, SPRITE v[], Texture2D T, Texture2D X, Texture2D G, Texture2D N, Texture2D J);
+void le_arquivo(char nome_arq[], JOGADOR top5[]);
+
+void salva_arquivo(char nome_arq[], JOGADOR top5[]);
+
+int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X, Texture2D G, Texture2D N, Texture2D J, Texture2D S, Texture2D B, Texture2D H, int *x_aviao, int *y_aviao);
+
+void desenhar_mapa(int nblocos, SPRITE v[], Texture2D T, Texture2D X, Texture2D G, Texture2D N, Texture2D J, Texture2D S, Texture2D B, Texture2D H);
 
 TIRO fshoot(int x, int y, Texture2D t);
 
@@ -81,7 +88,7 @@ SPRITE definir_sprites(int x, int y, Texture2D txt, char tipo, int flag);
 
 SPRITE definir_terrenos(int x, int y, Texture2D txt, char tipo, int flag);
 
-void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rectangle aviao, int *pontos, int *vidas, int *x, int *y, float *gas, Texture2D exp);
+void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rectangle aviao, int *pontos, int *vidas, int *x, int *y, float *gas, Texture2D exp, Sound bomb);
 
 void altera_variaveis(int *v, int novo);
 
