@@ -11,7 +11,7 @@
 #define TAM_RANK 50
 #define TAM_TITLE 130
 #define MAXSCORES 5
-#define ARQ_NOME "top5.bin"
+#define ARQ_NOME "highscore.bin"
 #define X_TITLE 100
 #define PTS_H 60
 #define PTS_P 200

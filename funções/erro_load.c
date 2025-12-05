@@ -1,5 +1,7 @@
 #include "config_function.h"
 
+//Função tosca de erro, que tomara que não seja utilizada
+
 void erro_load(void)
 {
     BeginDrawing();

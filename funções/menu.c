@@ -1,5 +1,5 @@
 #include "config_function.h"
-
+//Função que desenha o menu principal, cria os botões e retorna um char ao serem clicados
 char menu(void)
 {
     char op;
@@ -70,8 +70,7 @@ char menu(void)
 
 }
 
-#include "config_function.h"
-
+//Parecida com a menu(), mas tira a logo e adiciona alguns botões diferentes
 char pause(void)
 {
     char op;
@@ -139,6 +138,7 @@ char pause(void)
 
 }
 
+//Mesma ideia, mas ela printa a mensagem de Game Over e a pontuação final do jogador
 char pos_game(int pts)
 {
     char op;

@@ -1,5 +1,7 @@
 #include "config_function.h"
 
+//Função que atualiza a posição dos inimigos dando utilizando o array vetor_hitboxes
+
 void att_inimigos(SPRITE v[], int nblocos, int velocidade)
 {
     for(int i = 0; i < nblocos; i++){
@@ -27,10 +29,3 @@ void att_inimigos(SPRITE v[], int nblocos, int velocidade)
     }
 }
 
-    /*typedef struct
-{
-    int flag;
-    char tipo;
-    Rectangle ini;
-}SPRITE;
-*/

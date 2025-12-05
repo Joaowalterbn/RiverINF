@@ -3,11 +3,11 @@
 Rectangle move_player(int *x, int *y, Texture2D *plane_atual, Texture2D plane_center, Texture2D plane_left, Texture2D plane_right, int velocidade_y)
 {
     float velocidade = velocidade_y * 1.5, PosX = *x, PosY = *y;
-    float escala = 0.6;
+    float escala = 0.6; //Escala de diminuição da hitbox do player, mais uma correção para colisões injustas
     float original_alt, original_larg, larg_offset, alt_offset, hitbox_larg, hitbox_alt;
     Texture2D aviao = *plane_atual;
 
-    //1. ATUALIZA POSIÇÃO E TEXTURA
+    //Atualiza a posição y
     PosY -= velocidade_y;
     altera_variaveis(y, PosY);
 
@@ -31,7 +31,7 @@ Rectangle move_player(int *x, int *y, Texture2D *plane_atual, Texture2D plane_ce
     }
     altera_sprites(plane_atual, aviao);
 
-    //Pegar a altura e largura da sprite para setar as dimensoes da hitbox
+    //Correção da hitbox
     original_larg = (float)plane_atual->width; //equivalente a (*plane_atual).width
     original_alt = (float)plane_atual->height; //equivalente a (*plane_atual).height
 
@@ -41,7 +41,7 @@ Rectangle move_player(int *x, int *y, Texture2D *plane_atual, Texture2D plane_ce
     larg_offset = (original_larg - hitbox_larg) / 2.0f;
     alt_offset = (original_alt - hitbox_alt) / 2.0f;
 
-    // Cria o retângulo de colisão, aplicando a correção
+    //Cria a hitbox
     Rectangle player_hitbox =
     {
         (float)*x + larg_offset,
