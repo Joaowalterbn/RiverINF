@@ -53,9 +53,6 @@
 		<Unit filename="funções/fshoot.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="funções/le_arquivo.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="funções/le_mapa.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -72,9 +69,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="funções/print_rank.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="funções/salva_arquivo.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>

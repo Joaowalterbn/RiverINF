@@ -123,9 +123,9 @@ int main()
             //Verificação se o player está vivo
             if(vidas <= 0 || combustivel <= 0)
             {
-                tela_atual = ENDGAME;
                 mapa_carregado = false;
                 organizar_rank(pontuacao, top_five);
+                tela_atual = ENDGAME;
             }
             else
             {
@@ -143,10 +143,10 @@ int main()
                                 );
 
                 //Analisar o gasto de combustivel
-                deslocamento += 4;
-                if(deslocamento >= 80)
+                deslocamento += velocidade;
+                if(deslocamento >= 76)
                 {
-                    deslocamento -= 80;
+                    deslocamento -= 76;
                     combustivel -= 1;
                 }
 
