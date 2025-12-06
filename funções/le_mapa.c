@@ -32,7 +32,7 @@ int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X, T
                 i++;
                 posX += 40;
                 break;
-            case'R':
+            case' ':
                 posX += 40;
                 break;
             case'G':
