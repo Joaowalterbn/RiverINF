@@ -26,6 +26,7 @@ typedef enum GameScreen
     TROCA,
     PAUSE,
     GAMEPLAY,
+    ORGANIZAR,
     ENDGAME
 } GameScreen;
 
@@ -72,7 +73,7 @@ void organizar_rank(int pts_atual, JOGADOR ranking[]);
 
 char pos_game(int pts);
 
-void org_top5(JOGADOR r[MAXSCORES], int pts_novos, int ind);
+void org_top5(JOGADOR r[MAXSCORES], int pts_novos, int ind, char nome_recorde[]);
 
 void le_arquivo(char nome_arq[], JOGADOR top5[]);
 
