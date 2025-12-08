@@ -16,6 +16,7 @@ char menu(void)
         MeasureText("Novo jogo", TAM_DEFAULT),
         TAM_DEFAULT
     };
+
     DrawText("Ranking", 100, 340, TAM_DEFAULT, YELLOW);
     Rectangle ranking =
     {
@@ -24,6 +25,7 @@ char menu(void)
         MeasureText("Ranking", TAM_DEFAULT),
         TAM_DEFAULT
     };
+
     DrawText("Sair", 100, 450, TAM_DEFAULT, YELLOW);
     Rectangle sair =
     {
@@ -45,7 +47,6 @@ char menu(void)
         if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)||IsMouseButtonPressed(MOUSE_LEFT_BUTTON)||IsMouseButtonDown(MOUSE_LEFT_BUTTON))
         {
             op = 'g';
-            return op;
         }
     }
     if (CheckCollisionPointRec(GetMousePosition(), ranking))
@@ -53,7 +54,6 @@ char menu(void)
         if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)||IsMouseButtonPressed(MOUSE_LEFT_BUTTON)||IsMouseButtonDown(MOUSE_LEFT_BUTTON))
         {
             op = 'r';
-            return op;
         }
     }
 
@@ -62,11 +62,10 @@ char menu(void)
         if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)||IsMouseButtonPressed(MOUSE_LEFT_BUTTON)||IsMouseButtonDown(MOUSE_LEFT_BUTTON))
         {
             op = 's';
-            return op;
         }
     }
 
-
+    return op;
 
 }
 
@@ -113,7 +112,6 @@ char pause(void)
         if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)||IsMouseButtonPressed(MOUSE_LEFT_BUTTON)||IsMouseButtonDown(MOUSE_LEFT_BUTTON))
         {
             op = 'c';
-            return op;
         }
     }
     if (CheckCollisionPointRec(GetMousePosition(), Menu))
@@ -121,7 +119,6 @@ char pause(void)
         if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)||IsMouseButtonPressed(MOUSE_LEFT_BUTTON)||IsMouseButtonDown(MOUSE_LEFT_BUTTON))
         {
             op = 'm';
-            return op;
         }
     }
 
@@ -130,11 +127,10 @@ char pause(void)
         if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)||IsMouseButtonPressed(MOUSE_LEFT_BUTTON)||IsMouseButtonDown(MOUSE_LEFT_BUTTON))
         {
             op = 's';
-            return op;
         }
     }
 
-
+     return op;
 
 }
 
@@ -185,7 +181,6 @@ char pos_game(int pts)
         if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)||IsMouseButtonPressed(MOUSE_LEFT_BUTTON)||IsMouseButtonDown(MOUSE_LEFT_BUTTON))
         {
             op = 'g';
-            return op;
         }
     }
     if (CheckCollisionPointRec(GetMousePosition(), ranking))
@@ -193,7 +188,6 @@ char pos_game(int pts)
         if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)||IsMouseButtonPressed(MOUSE_LEFT_BUTTON)||IsMouseButtonDown(MOUSE_LEFT_BUTTON))
         {
             op = 'r';
-            return op;
         }
     }
 
@@ -202,11 +196,10 @@ char pos_game(int pts)
         if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)||IsMouseButtonPressed(MOUSE_LEFT_BUTTON)||IsMouseButtonDown(MOUSE_LEFT_BUTTON))
         {
             op = 'm';
-            return op;
         }
     }
 
-
+    return op;
 
 }
 

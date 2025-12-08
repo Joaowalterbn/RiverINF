@@ -1,6 +1,6 @@
 #include "config_function.h"
 
-//Função simples que dá a movimentação ao tiro!
+//Função que cria o tiro
 
 TIRO fshoot(int x, int y, Texture2D t)
 {

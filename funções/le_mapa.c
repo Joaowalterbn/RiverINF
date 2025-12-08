@@ -28,7 +28,7 @@ int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X, T
                 posX += 40;
                 break;
             case'X':
-                v[i] = definir_sprites(posX, posY, X, 'X', 2);
+                v[i] = definir_sprites(posX, posY, X, 'X', 1);
                 i++;
                 posX += 40;
                 break;
@@ -41,7 +41,7 @@ int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X, T
                 posX += 40;
                 break;
             case'N':
-                v[i] = definir_sprites(posX, posY, N, 'N', 1);
+                v[i] = definir_sprites(posX, posY, N, 'N', 2);
                 i++;
                 posX += 40;
                 break;
@@ -50,7 +50,7 @@ int le_mapa(char nome_arq[], SPRITE v[],Texture2D A, Texture2D T, Texture2D X, T
                 i++;
                 posX += 40;
                 break;
-            case'B':
+            case'P':
                 v[i] = definir_terrenos(posX, posY, B, 'B', 3);
                 i++;
                 posX += 40;
@@ -130,7 +130,7 @@ void desenhar_mapa(int nblocos, SPRITE v[], Texture2D T, Texture2D X, Texture2D 
                 DrawTexture(S, v[i].ini.x, v[i].ini.y, WHITE);
                 break;
             case'B':
-                DrawTexture(B, v[i].ini.x, v[i].ini.y, WHITE);
+                    DrawTexture(B, v[i].ini.x, v[i].ini.y, WHITE);
                 break;
             case'H':
                 DrawTexture(H, v[i].ini.x, v[i].ini.y, WHITE);
