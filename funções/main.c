@@ -4,7 +4,7 @@ int main()
 {
     GameScreen tela_atual = MENU;
     Fase fase_atual;
-    JOGADOR top_five[MAXSCORES], reset[MAXSCORES] = {0};
+    JOGADOR top_five[MAXSCORES]; //reset[MAXSCORES] = {0};
     //salva_arquivo("highscore.bin", reset);
     le_arquivo("highscore.bin", top_five);
 
@@ -51,6 +51,7 @@ int main()
 
     Sound exp = LoadSound("sounds/explosion.wav");
     Sound zap = LoadSound("sounds/zap.wav");
+    Sound ohyeah = LoadSound("sounds/oh-yeah.wav");
 
     Rectangle player_hitbox = {0};
 
@@ -124,7 +125,7 @@ int main()
             if(vidas <= 0 || combustivel <= 0)
             {
                 mapa_carregado = false;
-                organizar_rank(pontuacao, top_five);
+                organizar_rank(pontuacao, top_five, ohyeah);
                 tela_atual = ENDGAME;
             }
             else
@@ -301,8 +302,11 @@ int main()
     UnloadTexture(house);
     UnloadTexture(street);
     UnloadTexture(bridge);
+    UnloadTexture(navio_inv);
+    UnloadTexture(explosao);
     UnloadSound(zap);
     UnloadSound(exp);
+    UnloadSound(ohyeah);
 
     CloseAudioDevice();
     CloseWindow();

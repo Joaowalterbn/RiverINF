@@ -10,8 +10,8 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rect
         int flag = v[i].flag, tiro_ativo = *flag_tiro, life = *vidas, pts = *pontos;
         if(flag)
         {
-            char c = v[i].tipo;
-            Rectangle atual = v[i].ini;
+            char c = v[i].tipo; //Tipo da Sprite atual
+            Rectangle atual = v[i].ini;//Hitbox da Sprite atual
             switch(c)
             {
             case'T':
@@ -23,7 +23,7 @@ void checar_colisao(SPRITE v[], int nblocos, TIRO projetil, int *flag_tiro, Rect
                     altera_variaveis(vidas, life);
                     altera_variaveis(x, 450);
                     altera_variaveis(y, 750);
-                    altera_variaveis(invulnerabilidade_timer, 60);
+                    altera_variaveis(invulnerabilidade_timer, 60);//Para evitar dupla colisão
                 }
                 break;
             case'G':

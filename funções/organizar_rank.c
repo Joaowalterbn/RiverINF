@@ -1,5 +1,4 @@
 #include "config_function.h"
-#include <string.h> // Necessário para strcpy
 
 // Função le arquivo bem simples que pega os dados e coloca num array
 void le_arquivo(char nome_arq[], JOGADOR top5[])
@@ -9,12 +8,10 @@ void le_arquivo(char nome_arq[], JOGADOR top5[])
     {
         if(fread(top5, sizeof(JOGADOR), 5, fp) != 5)
         {
-            // Opcional: lidar com erro de leitura ou arquivo vazio
-            // erro_load();
+             erro_load();
         }
         fclose(fp);
     }
-    // Se não abrir (arquivo não existe), o array continua zerado (definido na main)
 }
 
 // Função que escreve os dados no arquivo binario
@@ -28,7 +25,7 @@ void salva_arquivo(char nome_arq[], JOGADOR top5[])
     }
     else
     {
-        // erro_load();
+         erro_load();
     }
 }
 
@@ -38,7 +35,6 @@ void org_top5(JOGADOR r[], int pts_novos, int ind, char nome_recorde[])
     JOGADOR novoj, temp1, temp2;
     novoj.pontos = pts_novos;
 
-    // Garante que o nome tenha terminação nula e copia
     strncpy(novoj.nome, nome_recorde, 7);
     novoj.nome[7] = '\0';
 
@@ -53,16 +49,16 @@ void org_top5(JOGADOR r[], int pts_novos, int ind, char nome_recorde[])
     }
 }
 
-bool processar_input_nome(char nome_recorde[], int *ind)
+int processar_nome(char nome_recorde[], int *ind)
 {
-    int tecla = GetCharPressed();
+    char tecla = GetCharPressed();
+    int flag = 0;
 
-    while (tecla > 0)
+    while (tecla != NULL)
     {
-        // Aceita letras e números, limita a 7 caracteres
-        if ((tecla >= 32) && (tecla <= 125) && (*ind < 7))
+        if ((tecla >= 32) && (tecla <= 122) && (*ind < 7))
         {
-            nome_recorde[*ind] = (char)tecla;
+            nome_recorde[*ind] = tecla;
             (*ind)++;
             nome_recorde[*ind] = '\0';
         }
@@ -78,73 +74,55 @@ bool processar_input_nome(char nome_recorde[], int *ind)
         }
     }
 
-    // Só permite confirmar se tiver digitado pelo menos 1 letra
-    if (IsKeyPressed(KEY_ENTER) && *ind > 0)
+
+    if (IsKeyPressed(KEY_ENTER) && *ind > 3)
     {
-        return true; // Finalizou a digitação
+        flag = 1;
     }
 
-    return false; // Ainda está digitando
+    return flag;
 }
 
-// Função apenas de desenho, recebe o nome atual para mostrar na tela
-// Função de desenho aprimorada com cursor piscante e melhor alinhamento
-// Função de desenho adaptada ao estilo pixel art
-void desenhar_input_nome(char nome_atual[])
+void desenhar_nome(char nome_atual[])
 {
-    DrawText("NOVO RECORDE!", 480 - MeasureText("NOVO RECORDE!", TAM_DEFAULT + 5)/2, 150, TAM_DEFAULT + 5, YELLOW);
-
-    DrawText("DIGITE SEU NOME:", 480 - MeasureText("DIGITE SEU NOME:", TAM_DEFAULT - 40)/2, 300, TAM_DEFAULT - 40, YELLOW); // Branco/Claro para contraste
-
-    // --- Definição e Desenho da Caixa de Texto ---
     Rectangle textBox = { 300, 370, 360, 70 };
 
-    // Fundo da caixa: Usaremos uma cor escura com alta transparência, ou PRETO
-    // Se o estilo for puramente pixel art, uma caixa sólida é melhor.
-    DrawRectangleRec(textBox, RAYWHITE);
-
-    // Borda: Amarela, para seguir o tema retro da imagem
-    DrawRectangleLinesEx(textBox, 4, YELLOW);
-
-    // Desenha o nome que o usuário está digitando
-    DrawText(nome_atual, textBox.x + 15, textBox.y + 15, 50, BLACK);
-
+    DrawText("NOVO RECORDE!", 480 - MeasureText("NOVO RECORDE!", TAM_DEFAULT + 5)/2, 150, TAM_DEFAULT + 5, YELLOW);
+    DrawText("DIGITE SEU NOME:", 480 - MeasureText("DIGITE SEU NOME:", TAM_DEFAULT - 40)/2, 300, TAM_DEFAULT - 40, YELLOW); // Branco/Claro para contraste
     DrawText("Pressione [ENTER] para confirmar", 480 - MeasureText("Pressione [ENTER] para confirmar", TAM_DEFAULT - 60)/2, 500, TAM_DEFAULT - 60, YELLOW);
+    DrawRectangleRec(textBox, RAYWHITE);
+    DrawRectangleLinesEx(textBox, 4, YELLOW);
+    DrawText(nome_atual, textBox.x + 15, textBox.y + 15, 50, BLACK);
 }
 
-// Função principal que gerencia o Rank
-void organizar_rank(int pts_atual, JOGADOR ranking[])
+void organizar_rank(int pts_atual, JOGADOR ranking[], Sound yeah)
 {
-    int indice_rank = -1;
+    int indice_rank = -1; //Flag para começar a coleta do nome
 
-    // 1. Verifica se entrou no top 5 e descobre a posição
     for(int i = 0; i < 5; i++)
     {
         if(pts_atual > ranking[i].pontos)
         {
             indice_rank = i;
-            break; // Achou a posição, para o loop
+            PlaySound(yeah);
+            break;
         }
     }
 
-    // 2. Se entrou no rank, inicia o loop de captura de nome
+    //Inicio da coleta do nome
     if(indice_rank != -1)
     {
-        char nome_recorde[8] = {0}; // Buffer para o nome (7 letras + \0)
-        int letras_count = 0;       // Índice atual da letra
-        bool nome_finalizado = false;
+        char nome_recorde[8] = {0};
+        int cont_ind = 0;
+        int nome_finalizado = 0;
 
         while(!nome_finalizado)
         {
-            // Input
-            nome_finalizado = processar_input_nome(nome_recorde, &letras_count);
+            nome_finalizado = processar_nome(nome_recorde, &cont_ind);
 
-            // Desenho
             BeginDrawing();
-            ClearBackground(DARKBLUE);
-
-            desenhar_input_nome(nome_recorde);
-
+                ClearBackground(DARKBLUE);
+                desenhar_nome(nome_recorde);
             EndDrawing();
         }
 

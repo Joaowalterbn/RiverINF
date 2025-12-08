@@ -26,7 +26,6 @@ typedef enum GameScreen
     TROCA,
     PAUSE,
     GAMEPLAY,
-    ORGANIZAR,
     ENDGAME
 } GameScreen;
 
@@ -55,7 +54,7 @@ typedef struct
 
 typedef struct
 {
-    char nome[45];
+    char nome[8];
     int pontos;
 } JOGADOR;
 
@@ -69,7 +68,7 @@ Rectangle print_rank(void);
 
 void erro_load(void);
 
-void organizar_rank(int pts_atual, JOGADOR ranking[]);
+void organizar_rank(int pts_atual, JOGADOR ranking[], Sound yeah);
 
 char pos_game(int pts);
 
